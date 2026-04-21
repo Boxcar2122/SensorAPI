@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.sensorapi.filters;
+package com.mycompany.sensorapi.logging;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -19,15 +19,15 @@ public class LoggingFilter implements ContainerRequestFilter, ContainerResponseF
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        LOGGER.info("--- incoming request ---");
-        LOGGER.info("method: " + requestContext.getMethod());
-        LOGGER.info("uri: " + requestContext.getUriInfo().getAbsolutePath());
+        LOGGER.info("!!! INCOMING REQUEST !!!");
+        LOGGER.info("HTTP Method: " + requestContext.getMethod());
+        LOGGER.info("URI: " + requestContext.getUriInfo().getAbsolutePath());
     }
 
     @Override
     public void filter(ContainerRequestContext requestContext,
             ContainerResponseContext responseContext) throws IOException {
-        LOGGER.info("--- outgoing response ---");
-        LOGGER.info("status: " + responseContext.getStatus());
+        LOGGER.info("+++ OUTGOING RESPONSE +++");
+        LOGGER.info("Status: " + responseContext.getStatus());
     }
 }

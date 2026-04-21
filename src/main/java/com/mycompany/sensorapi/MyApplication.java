@@ -18,7 +18,7 @@ import com.mycompany.sensorapi.exceptions.LinkedResourceNotFoundExceptionMapper;
 import com.mycompany.sensorapi.exceptions.SensorUnavailableExceptionMapper;
 import com.mycompany.sensorapi.exceptions.GlobalExceptionMapper;
 
-import com.mycompany.sensorapi.filters.LoggingFilter;
+import com.mycompany.sensorapi.logging.LoggingFilter;
 
 @ApplicationPath("/api/v1")
 public class MyApplication extends Application {
