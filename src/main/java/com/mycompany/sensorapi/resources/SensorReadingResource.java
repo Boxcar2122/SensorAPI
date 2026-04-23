@@ -7,8 +7,8 @@ package com.mycompany.sensorapi.resources;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.mycompany.sensorapi.Database;
 import com.mycompany.sensorapi.exceptions.SensorUnavailableException;
@@ -32,7 +32,7 @@ public class SensorReadingResource {
             if (sensor.getId().equals(id)) { // found sensor with matching id
                 List<SensorReading> sensorReadings = Database.readings.get(id); // get value (readings list) from key (sensor id)
                 if (sensorReadings == null) { // if key or value doesnt exist
-                    sensorReadings = new ArrayList<>(); // empty readings (not 404 error, it's found but is empty)
+                    sensorReadings = new CopyOnWriteArrayList<>(); // empty readings (not 404 error, it's found but is empty)
                 }
                 return Response.ok(sensorReadings).build(); // 200
             }
@@ -70,7 +70,7 @@ public class SensorReadingResource {
             reading.setTimestamp(System.currentTimeMillis()); // epoch time (ms)
         }
         if (!Database.readings.containsKey(id)) { // if sensor doesnt have readings list (first reading)
-            Database.readings.put(id, new ArrayList<>());
+            Database.readings.put(id, new CopyOnWriteArrayList<>());
         }
         Database.readings.get(id).add(reading); // add reading to sensor's new readings list
         existingSensor.setCurrentValue(reading.getValue()); // update sensor current reading
