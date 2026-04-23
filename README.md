@@ -39,15 +39,25 @@ All errors return a JSON. Example:
 
 ## Sample Curl Commands
 ### 1. Get API metadata (discovery resource)
-`curl http://localhost:8080/SensorAPI/api/v1`
+**RUN:** `curl http://localhost:8080/SensorAPI/api/v1`
 ### 2. Get all rooms
-`curl http://localhost:8080/SensorAPI/api/v1/rooms`
+**RUN:** `curl http://localhost:8080/SensorAPI/api/v1/rooms`
 ### 3. Create a new room
-`curl -X POST http://localhost:8080/SensorAPI/api/v1/rooms -H "Content-Type: application/json" -d "{"id":"LAB-202","name":"Robotics Lab","capacity":25}"`
+```
+curl -X POST http://localhost:8080/SensorAPI/api/v1/rooms \ 
+-H "Content-Type: application/json" \ 
+-d '{"id":"LAB-202","name":"Robotics Lab","capacity":25}' 
+```
+**RUN:** `curl -X POST http://localhost:8080/SensorAPI/api/v1/rooms -H "Content-Type: application/json" -d "{\"id\":\"LAB-202\",\"name\":\"Robotics Lab\",\"capacity\":25}"`
 ### 4. Filter sensors by type
-`curl "http://localhost:8080/SensorAPI/api/v1/sensors?type=Temperature"`
+**RUN:** `curl "http://localhost:8080/SensorAPI/api/v1/sensors?type=Temperature"`
 ### 5. Post a new reading to a sensor
-`curl -X POST http://localhost:8080/SensorAPI/api/v1/sensors/TEMP-001/readings -H "Content-Type: application/json" -d "{"value":24.7}"`
+```
+curl -X POST http://localhost:8080/SensorAPI/api/v1/sensors/TEMP-001/readings \
+  -H "Content-Type: application/json" \
+  -d '{"value":24.7}'
+```
+**RUN:** `curl -X POST http://localhost:8080/SensorAPI/api/v1/sensors/TEMP-001/readings -H "Content-Type: application/json" -d "{\"value\":24.7}"`
 
 ## Questions Report
 **1.1:** In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
