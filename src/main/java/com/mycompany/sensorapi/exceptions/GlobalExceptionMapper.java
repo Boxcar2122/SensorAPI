@@ -20,7 +20,7 @@ public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
         ErrorMessage error = new ErrorMessage( // is most likely a runtime error
                 "An internal server error occurred",
                 500,
-                "https://myuniversity.edu/api/docs/errors"
+                "https://github.com/Boxcar2122/SensorAPI#error-responses"
         );
         return Response.status(500).entity(error).build();
     }
