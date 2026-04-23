@@ -19,7 +19,7 @@ That should show the discovery resource with the API metadata.
 ## Error Responses
 
 All errors return a JSON. Example:
-```json
+```
 {
     "errorMessage": "Not found error", // description of the error
     "errorCode": 404, // HTTP error code
